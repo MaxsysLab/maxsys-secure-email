@@ -103,18 +103,18 @@ Yes. Letters of any script are accepted, with spaces, hyphens, apostrophes and f
 = 3.6.0 =
 First public release. If you are updating from 3.5.5, read the two notes marked "On update".
 
-* Security: the mail server's certificate is now checked. On update: a site that already had settings keeps the old behaviour, checks off, until you switch it on in the SMTP tab; the settings page says so.
-* Security: the visitor's address is no longer read from a header any caller can write, unless you say the site is behind that kind of proxy. On update: a site that already had settings keeps the old behaviour until you choose on the Security tab; the settings page says so.
-* Security: the list of allowed websites now works. Before, it had no effect on current WordPress, and a page on any website could use the form.
-* Fixed: the rate limit did not work on a site whose clock is not UTC. Behind UTC it never limited; ahead of UTC it never forgot.
-* Fixed: a failed mail was recorded as sent.
-* Fixed: names with accents, or in scripts other than Latin, were refused.
+* Security: the mail server's certificate is checked. On update: a site that already had settings keeps the old behaviour, checks off, until you switch it on in the SMTP tab; the settings page says so.
+* Security: the visitor's address is read from the connection itself, unless you say the site is behind a proxy. On update: a site that already had settings keeps the old behaviour until you choose on the Security tab; the settings page says so.
+* Security: the list of allowed websites is enforced on current WordPress, on the browser's reply and on the request itself.
+* Fixed: the rate limit now keeps correct time on a site whose clock is not UTC.
+* Fixed: a mail that fails to go out is recorded as failed.
+* Fixed: names with accents, and names in scripts other than Latin, are accepted.
 * Fixed: damaged characters on the settings and submissions screens.
-* Changed: the plugin sets headers only on its own endpoint. It was written to change every REST response on the site.
-* Changed: the tables are created once, not on every page load.
-* Changed: a new install allows its own website by default, not maxsys.org.
+* Changed: the plugin sets its headers only on its own endpoint.
+* Changed: the tables are created once, when the plugin is activated or updated.
+* Changed: a new install allows its own website by default.
 * Added: the licence, this readme, and an uninstall routine that removes the plugin's data.
 * Output escaping and database queries brought in line with the WordPress coding standards.
 
 = 3.5.5 =
-* The version used on Maxsys's own sites before public release.
+* The version before public release.
