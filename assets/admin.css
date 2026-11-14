@@ -1,0 +1,23 @@
+.maxsys-admin-tabs .nav-tab-wrapper {
+    margin-bottom: 20px;
+}
+.maxsys-admin-tabs .tab-content {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+.maxsys-admin-tabs .nav-tab-active {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+}
+.tab-content {
+    display: none;
+}
+.tab-content:first-of-type {
+    display: block;
+}
+#smtp-test-result {
+    margin-top: 10px;
+    font-weight: bold;
+}
