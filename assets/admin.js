@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
     });
     $('#test-smtp').click(function() {
         var email = $('#test-email').val();
-        $('#smtp-test-result').html(maxsysAjax.strings.testing);
+        $('#smtp-test-result').text(maxsysAjax.strings.testing);
         $.ajax({
             url: maxsysAjax.ajaxurl,
             type: 'POST',
@@ -18,10 +18,10 @@ jQuery(document).ready(function($) {
                 test_email: email
             },
             success: function(response) {
-                $('#smtp-test-result').html(response.data);
+                $('#smtp-test-result').text(response.data);
             },
             error: function(response) {
-                $('#smtp-test-result').html(maxsysAjax.strings.error + ' ' + (response.responseJSON?.data || 'Unknown error'));
+                $('#smtp-test-result').text(maxsysAjax.strings.error + ' ' + (response.responseJSON?.data || 'Unknown error'));
             }
         });
     });

@@ -1,0 +1,6 @@
+{
+  "steps": [
+    { "step": "activatePlugin", "pluginPath": "maxsys-secure-email/secure-plugin.php" },
+    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; global $wpdb; MAXSYS_Secure_Email::get_instance()->maybe_upgrade(); update_option('maxsys_secure_email_options', ['smtp_enabled' => false]); $s = $wpdb->prefix . 'maxsys_form_submissions'; $r = $wpdb->prefix . 'maxsys_rate_limits'; $wpdb->insert($s, ['name' => 'A', 'email' => 'a@example.org', 'message' => 'hello there', 'ip_address' => '127.0.0.1']); if (!$wpdb->get_var(\"SELECT COUNT(*) FROM $s\")) { throw new Exception('setup failed: no row'); } define('WP_UNINSTALL_PLUGIN', 'maxsys-secure-email/secure-plugin.php'); require WP_PLUGIN_DIR . '/maxsys-secure-email/uninstall.php'; if (get_option('maxsys_secure_email_options', 'GONE') !== 'GONE') { throw new Exception('settings still present'); } if (get_option('maxsys_secure_email_db_version', 'GONE') !== 'GONE') { throw new Exception('db version still present'); } foreach ([$s, $r] as $t) { if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $t))) { throw new Exception('table still present: ' . $t); } }" }
+  ]
+}
